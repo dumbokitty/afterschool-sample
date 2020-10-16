@@ -1,0 +1,5 @@
+FROM api-backend_web:latest
+ENV NODE_ENV dev
+RUN npm install --only=dev 
+
+CMD ["npm", "run", "dev"]

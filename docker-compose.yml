@@ -1,0 +1,20 @@
+version : "2"
+services:
+  web: 
+    build: 
+      context: .
+      dockerfile: Dockerfile.dev
+    ports: 
+      - "8080:8080"
+    depends_on: 
+      - mongo
+    working_dir: /app
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+    command: ["npm", "run", "dev"]
+  mongo: 
+    image: mongo
+    ports: 
+      - "27017:27017"
+  
